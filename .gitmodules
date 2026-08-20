@@ -1,0 +1,3 @@
+[submodule "caja-cli"]
+	path = caja-cli
+	url = https://github.com/caja-tech/caja-cli.git

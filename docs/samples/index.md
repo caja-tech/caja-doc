@@ -11,7 +11,7 @@ print("Hello, World!")
 ## Basic Function
 
 ```caja
-fn add(a: int, b: int) -> int {
+fn add(a: Number, b: Number) -> Number {
     return a + b;
 }
 ```

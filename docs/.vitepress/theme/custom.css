@@ -1,0 +1,99 @@
+/* 
+  VitePress Theme Customization
+  Colors mapped from:
+  - accent_colors.scss
+  - light_theme_colors.scss
+  - dark_theme_colors.scss
+*/
+
+:root {
+  /* Override the main body text font */
+  --vp-font-family-base: 'Plus Jakarta Sans', sans-serif;
+
+  /* Override the code block font */
+  --vp-font-family-mono: 'Jetbrains Mono', monospace;
+
+  /* Accent Colors */
+  --vp-c-brand-1: #F59E0B; /* Color: golden-orange. Used for: primary buttons, active links, hover states, primary accents */
+  --vp-c-brand-2: #d97706; /* Color: ochre. Used for: primary button hover states, secondary accents */
+  --vp-c-brand-3: #E78B09; /* Color: carrot-orange. Used for: primary button active states */
+  --vp-c-brand-soft: rgba(217, 119, 6, 0.16); /* Color: translucent ochre. Used for: soft backgrounds on branded elements, badge backgrounds, selected states */
+
+  /* Light Theme Backgrounds & Text */
+  --vp-c-bg: #fdfbf7; /* Color: porcelain. Used for: Main page background */
+  --vp-c-bg-alt: #f6f1e7; /* Color: floral-white. Used for: Sidebar, secondary panels, header, footer */
+  --vp-c-bg-elv: #eee6d8; /* Color: soft-linen. Used for: Elevated dropdowns, modals, floating menus */
+  --vp-c-bg-soft: #f6f1e7; /* Color: floral-white. Used for: Search bar, quote blocks, inline code */
+  
+  --vp-c-text-1: #2c241d; /* Color: dark-coffee. Used for: Primary text, headings, body text */
+  --vp-c-text-2: #6b5c4d; /* Color: stone-brown. Used for: Secondary text, sidebar links, summaries */
+  --vp-c-text-3: #9B8A79; /* Color: dusty-taupe. Used for: Tertiary text, captions, icons, placeholder text */
+
+  --vp-c-divider: #e2d6c3; /* Color: soft-sand. Used for: Horizontal rules (<hr>), dividers between sections */
+  --vp-c-border: #e2d6c3; /* Color: soft-sand. Used for: Component borders, table borders, input borders, button borders */
+
+  --vp-code-block-bg: #f6f1e7; /* Color: floral-white. Used for: Background color for code blocks (<pre>) */
+
+  /* Success Colors - Mint Leaf */
+  --vp-c-success-1: #63B995; /* Color: mint-leaf-1. Used for: Success state text, success badges, checkmarks (custom block info) */
+  --vp-c-success-2: #5DAE88; /* Color: mint-leaf-2. Used for: Success state hover */
+  --vp-c-success-3: #488A5E; /* Color: mint-leaf-3. Used for: Success state active */
+  --vp-c-success-soft: rgba(45, 90, 39, 0.14); /* Color: translucent dark-green. Used for: Success block background (custom block tip/info) */
+
+  /* Warning Colors - Warm gold */
+  --vp-c-warning-1: #C5975B; /* Color: warm-gold-1. Used for: Warning state text, warning badges (custom block warning) */
+  --vp-c-warning-2: #B08450; /* Color: warm-gold-2. Used for: Warning state hover */
+  --vp-c-warning-3: #9A7245; /* Color: warm-gold-3. Used for: Warning state active */
+  --vp-c-warning-soft: rgba(197, 151, 91, 0.14); /* Color: translucent warm-gold. Used for: Warning block background (custom block warning) */
+
+  /* Danger Colors - Terra cotta */
+  --vp-c-danger-1: #C44536; /* Color: terra-cotta-1. Used for: Danger state text, danger badges, errors (custom block danger) */
+  --vp-c-danger-2: #B33A2E; /* Color: terra-cotta-2. Used for: Danger state hover */
+  --vp-c-danger-3: #A03025; /* Color: terra-cotta-3. Used for: Danger state active */
+  --vp-c-danger-soft: rgba(196, 69, 54, 0.14); /* Color: translucent terra-cotta. Used for: Danger block background (custom block danger) */
+
+  .pager-link .title {
+    color: var(--vp-c-text-2) !important;
+    font-weight: bold;
+  }
+
+  /* Custom spacing for better readability */
+  --vp-layout-max-width: 1440px; /* Used for: Max width of the main layout wrapper/container */
+}
+
+.dark {
+  /* Accent Colors */
+  --vp-c-brand-1: #F59E0B; /* Color: golden-orange. Used for: primary buttons, active links, hover states, primary accents */
+  --vp-c-brand-2: #E78B09; /* Color: carrot-orange. Used for: primary button hover states, secondary accents */
+  --vp-c-brand-3: #d97706; /* Color: ochre. Used for: primary button active states */
+  --vp-c-brand-soft: rgba(217, 119, 6, 0.16); /* Color: translucent golden-orange. Used for: soft backgrounds on branded elements, badge backgrounds, selected states */
+
+  /* Dark Theme Backgrounds & Text */
+  --vp-c-bg: #1a0e15; /* Color: coffee-bean. Used for: Main page background */
+  --vp-c-bg-alt: #24131d; /* Color: midnight-violet-3. Used for: Sidebar, secondary panels, header, footer */
+  --vp-c-bg-elv: #321a28; /* Color: midnight-violet-2. Used for: Elevated dropdowns, modals, floating menus */
+  --vp-c-bg-soft: #412234; /* Color: midnight-violet. Used for: Search bar, quote blocks, inline code */
+  
+  --vp-c-text-1: #f4e9f0; /* Color: lavender-blush. Used for: Primary text, headings, body text */
+  --vp-c-text-2: #fbf7f6; /* Color: snow. Used for: Secondary text, sidebar links, summaries */
+  --vp-c-text-3: #947888; /* Color: dusty-mauve. Used for: Tertiary text, captions, icons, placeholder text */
+
+  --vp-c-divider: #5a2f48; /* Color: blackberry-cream. Used for: Horizontal rules (<hr>), dividers between sections */
+  --vp-c-border: #5a2f48;  /* Color: blackberry-cream. Used for: Component borders, table borders, input borders, button borders */
+
+  --vp-code-block-bg: #140a10; /* Color: dark-coffee-bean. Used for: Background color for code blocks (<pre>) */
+}
+
+/* Custom Font for Brand Logo */
+.VPNavBarTitle .title {
+  font-family: 'Modak', system-ui, sans-serif;
+  font-size: 28px; 
+  font-weight: normal;
+  color: var(--vp-c-brand-1);
+}
+
+/* Custom Font for Home Page Hero Title */
+.VPHero .name {
+  font-family: 'Modak', system-ui, sans-serif;
+  font-weight: normal;
+}

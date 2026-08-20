@@ -2,7 +2,7 @@
 layout: home
 
 hero:
-  name: "Caja"
+  name: "Cajá"
   text: "The modern programming language"
   tagline: Elegant, fast, and secure.
   actions:

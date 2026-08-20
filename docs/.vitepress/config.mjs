@@ -21,7 +21,8 @@ export default defineConfig({
   themeConfig: {
     nav: [
       { text: 'Home', link: '/' },
-      { text: 'Introduction', link: '/guide/' },
+      { text: 'Introduction', link: '/introduction/' },
+      { text: 'Documentation', link: '/documentation/' },
       { text: 'Samples', link: '/samples/' },
       { text: 'Releases', link: '/releases/' }
     ],
@@ -30,8 +31,32 @@ export default defineConfig({
       {
         text: 'Introduction',
         items: [
-          { text: 'What is Caja?', link: '/guide/' },
-          { text: 'Features', link: '/guide/features' }
+          { text: 'What is Caja?', link: '/introduction/' },
+          { text: 'Features', link: '/introduction/features' }
+        ]
+      },
+      {
+        text: 'Documentation',
+        items: [
+          { text: 'Start Here', link: '/documentation/' },
+          { text: 'Types', link: '/documentation/types' },
+          { text: 'Generics', link: '/documentation/generics' },
+          { text: 'Recursion', link: '/documentation/recursion' },
+          { text: 'Math Module', link: '/documentation/math' },
+          { text: 'String Module', link: '/documentation/string' },
+          { text: 'Array Module', link: '/documentation/array' },
+          { text: 'Map Module', link: '/documentation/map' },
+          { text: 'Date Module', link: '/documentation/date' },
+          { text: 'Cast Module', link: '/documentation/cast' },
+          { text: 'Log Module', link: '/documentation/log' }
+        ]
+      },
+      {
+        text: 'Native Libs',
+        items: [
+          { text: 'Overview', link: '/libs/' },
+          { text: 'stdlib', link: '/libs/stdlib' },
+          { text: 'query', link: '/libs/query' }
         ]
       },
       {

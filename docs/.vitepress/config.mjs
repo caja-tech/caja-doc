@@ -5,8 +5,10 @@ const cajaLang = JSON.parse(fs.readFileSync('./docs/.vitepress/caja.tmLanguage.j
 
 export default defineConfig({
   title: "Cajá",
+  titleTemplate: ":title - Cajá",
   description: "The modern programming language",
   head: [
+    ['link', { rel: 'icon', href: '/logo32x32.svg', type: 'image/svg+xml' }],
     ['link', { rel: 'preconnect', href: 'https://fonts.googleapis.com' }],
     ['link', { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: '' }],
     ['link', { href: 'https://fonts.googleapis.com/css2?family=Modak&display=swap', rel: 'stylesheet' }]
@@ -19,6 +21,7 @@ export default defineConfig({
     }
   },
   themeConfig: {
+    logo: '/logo32x32.svg',
     nav: [
       { text: 'Home', link: '/' },
       { text: 'Introduction', link: '/introduction/' },

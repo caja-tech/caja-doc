@@ -1,3 +1,6 @@
+---
+title: Releases
+---
 # Release Notes
 
 Stay up to date with the latest changes, features, and fixes in Caja.

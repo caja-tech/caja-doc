@@ -1,3 +1,6 @@
+---
+title: Samples
+---
 # Sample Code
 
 Here are some examples of what Caja code looks like.

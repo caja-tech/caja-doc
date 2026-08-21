@@ -1,3 +1,6 @@
+---
+title: Introduction
+---
 # Introduction to Cajá
 
 Welcome to the Cajá programming language documentation. 

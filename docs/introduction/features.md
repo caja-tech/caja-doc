@@ -140,3 +140,37 @@ let result = [1, 2, 3, 4, 5, 6]
 
 return result
 ```
+
+### Private Access Modifier
+In Cajá, the `private` access modifier can be used on variable declarations (`let`, `const`) and type definitions (`type`). It guarantees that the variable or type is only accessible within the module it was defined in and cannot be exported to other modules. Note that `private` cannot be used on individual properties inside a struct.
+
+```caja
+# Accessible only within this module
+private const MAX_CONNECTIONS = 100
+
+private let helper_function = fn() -> String {
+    return "This is a private helper"
+}
+
+private type InternalConfig struct {
+    retries Number
+    timeout Number
+}
+```
+
+### Constants
+You can define immutable variables using the `const` keyword. Constants in Cajá cannot be reassigned or changed once they are initialized. This immutability extends to the properties of a struct; if a struct is assigned to a constant, its properties cannot be reassigned.
+
+```caja
+const PI = 3.14159
+# PI = 3.14 # This will cause an error
+
+type Point struct {
+    x Number
+    y Number
+}
+
+const origin = Point { x: 0, y: 0 }
+# origin.x = 10 # This will also cause an error
+# origin = Point { x: 1, y: 1 } # This will cause an error as well
+```

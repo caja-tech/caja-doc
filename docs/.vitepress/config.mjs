@@ -23,6 +23,7 @@ export default defineConfig({
       { text: 'Home', link: '/' },
       { text: 'Introduction', link: '/introduction/' },
       { text: 'Documentation', link: '/documentation/' },
+      { text: 'Libraries', link: '/libs/' },
       { text: 'Samples', link: '/samples/' },
       { text: 'Releases', link: '/releases/' }
     ],
@@ -30,6 +31,7 @@ export default defineConfig({
     sidebar: [
       {
         text: 'Introduction',
+        collapsed: false,
         items: [
           { text: 'What is Caja?', link: '/introduction/' },
           { text: 'Features', link: '/introduction/features' }
@@ -37,6 +39,7 @@ export default defineConfig({
       },
       {
         text: 'Documentation',
+        collapsed: false,
         items: [
           { text: 'Start Here', link: '/documentation/' },
           { text: 'Types', link: '/documentation/types' },
@@ -52,7 +55,8 @@ export default defineConfig({
         ]
       },
       {
-        text: 'Native Libs',
+        text: 'Libraries',
+        collapsed: false,
         items: [
           { text: 'Overview', link: '/libs/' },
           { text: 'stdlib', link: '/libs/stdlib' },
@@ -61,12 +65,14 @@ export default defineConfig({
       },
       {
         text: 'Samples',
+        collapsed: false,
         items: [
           { text: 'Examples', link: '/samples/' }
         ]
       },
       {
         text: 'Releases',
+        collapsed: false,
         items: [
           { text: 'Release Notes', link: '/releases/' }
         ]

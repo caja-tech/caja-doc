@@ -3,6 +3,22 @@ import fs from 'fs'
 
 const cajaLang = JSON.parse(fs.readFileSync('./docs/.vitepress/caja.tmLanguage.json', 'utf8'))
 
+let releaseSidebarItems = []
+try {
+  const res = await fetch('https://api.github.com/repos/caja-tech/caja-cli/releases', {
+    headers: { 'X-GitHub-Api-Version': '2022-11-28' }
+  })
+  if (res.ok) {
+    const releases = await res.json()
+    releaseSidebarItems = releases.map(r => ({
+      text: r.name || r.tag_name,
+      link: `/releases/${r.tag_name}`
+    }))
+  }
+} catch (e) {
+  console.error('Failed to fetch releases for sidebar', e)
+}
+
 export default defineConfig({
   title: "Cajá",
   titleTemplate: ":title - Cajá",
@@ -29,7 +45,7 @@ export default defineConfig({
       { text: 'Introduction', link: '/introduction/' },
       { text: 'Documentation', link: '/documentation/' },
       { text: 'Libraries', link: '/libs/' },
-      { text: 'Samples', link: '/samples/' },
+      { text: 'Use Cases', link: '/use-cases/' },
       { text: 'Releases', link: '/releases/' }
     ],
 
@@ -69,17 +85,21 @@ export default defineConfig({
         ]
       },
       {
-        text: 'Samples',
+        text: 'Use Cases',
         collapsed: false,
         items: [
-          { text: 'Examples', link: '/samples/' }
+          { text: 'Showcase', link: '/use-cases/' },
+          { text: 'E-Commerce', link: '/use-cases/ecommerce' },
+          { text: 'Revenue', link: '/use-cases/revenue' },
+          { text: 'Finance', link: '/use-cases/financial' }
         ]
       },
       {
         text: 'Releases',
         collapsed: false,
         items: [
-          { text: 'Release Notes', link: '/releases/' }
+          { text: 'Overview', link: '/releases/' },
+          ...releaseSidebarItems
         ]
       }
     ],

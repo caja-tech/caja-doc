@@ -58,6 +58,20 @@ let double = fn(x: Number) -> Number { return x * 2 }
 return apply(double, 5)
 ```
 
+### Closures
+Functions in Cajá can capture and remember variables from their surrounding scope, even after that scope has finished executing. This allows you to create powerful function factories and encapsulate configuration.
+
+```caja
+let make_multiplier = fn(factor: Number) -> fn(Number) -> Number {
+    return fn(n: Number) -> Number {
+        return n * factor
+    }
+}
+
+let double = make_multiplier(2)
+return double(5)
+```
+
 ### Generic Functions
 Cajá supports generic type parameters using angle brackets `<T>`. When invoking a generic function explicitly, you can use the turbofish syntax `::<T>`.
 

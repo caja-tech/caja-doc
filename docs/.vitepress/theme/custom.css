@@ -567,3 +567,32 @@ html.is-home-page:not(.scrolled-past-hero) .VPNavBarTitle {
   opacity: 0;
   pointer-events: none;
 }
+
+/* Installation GIF */
+.caja-install-gif {
+  display: block !important;
+  width: 100% !important;
+  margin-bottom: 1.5rem !important;
+  border-radius: 8px !important;
+}
+
+@media (max-width: 639px) {
+  .caja-install-gif {
+    margin-left: -24px !important;
+    margin-right: -24px !important;
+    width: calc(100% + 48px) !important;
+    max-width: none !important;
+    border-radius: 0 !important;
+  }
+}
+
+/* GitHub Release Markdown HTML Styles */
+.github-release-content h3 { margin-top: 1.5rem; margin-bottom: 0.5rem; font-size: 1.25rem; font-weight: 600; }
+.github-release-content ul { padding-left: 1.25rem; margin-bottom: 1rem; list-style-type: disc; }
+.github-release-content li { margin-bottom: 0.25rem; }
+.github-release-content p { margin-bottom: 1rem; line-height: 1.6; }
+.github-release-content code { background-color: var(--vp-c-bg-mute); padding: 0.15rem 0.3rem; border-radius: 4px; font-size: 0.9em; }
+.github-release-content pre { background-color: var(--vp-c-bg-mute); padding: 1rem; border-radius: 8px; overflow-x: auto; margin-bottom: 1rem; }
+.github-release-content pre code { background-color: transparent; padding: 0; border-radius: 0; }
+.github-release-content a { color: var(--vp-c-brand); text-decoration: underline; }
+.github-release-content a:hover { color: var(--vp-c-brand-dark); }

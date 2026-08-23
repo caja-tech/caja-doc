@@ -6,6 +6,9 @@ layout: home
 
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue'
+import { useData } from 'vitepress'
+
+const { isDark } = useData()
 
 const activeImage = ref('std')
 const isMarqueePaused = ref(false)
@@ -57,11 +60,15 @@ onUnmounted(() => {
   
   <div class="actions">
     <a href="/introduction/" class="action-btn brand">Get Started</a>
-    <a href="/samples/" class="action-btn alt">View Samples</a>
+    <a href="/use-cases/" class="action-btn alt">View Use Cases</a>
   </div>
 </div>
 
 <div class="caja-hero-install">
+
+<ClientOnly>
+  <img class="caja-install-gif" :src="isDark ? '/caja-install-dark.gif' : '/caja-install-light.gif'" alt="Caja Installation Demo" />
+</ClientOnly>
 
 ::: code-group
 ```bash [npm]
@@ -145,8 +152,14 @@ bun add -g @caja/cli
 <div class="caja-feature-section bg-alt">
   <div class="caja-feature-content reverse">
     <div class="caja-feature-text">
-      <h2>Pure Functions</h2>
-      <p>Built-in standard modules promote functional programming with deterministic pure mathematical calculations free of side effects.</p>
+      <h2>Functional Programming</h2>
+      <p>Unlock true functional power with Closures and Higher-Order Functions. Easily encapsulate configuration and state to create highly reusable, domain-specific function factories.</p>
+      <div style="margin-top: 1.5rem;">
+        <a href="/introduction/features#high-order-functions" class="action-btn brand">Explore HOFs & Closures</a>
+      </div>
+    </div>
+    <div class="caja-feature-image">
+      <img src="/closures.webp" alt="Caja Closures" />
     </div>
   </div>
 </div>

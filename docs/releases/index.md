@@ -1,11 +1,10 @@
 ---
 title: Releases
 ---
-# Release Notes
+# Releases Overview
 
-Stay up to date with the latest changes, features, and fixes in Caja.
+Welcome to the Cajá Release Notes! 
 
-## v1.0.0 (Initial Release)
+To view the details of a specific release, please select a version from the **Releases** section in the left sidebar. Our documentation automatically fetches and builds dedicated pages for each official GitHub release.
 
-- **Language Core**: Initial release of the Caja programming language.
-- **Documentation**: New documentation website launched.
+[View all releases on GitHub](https://github.com/caja-tech/caja-cli/releases)

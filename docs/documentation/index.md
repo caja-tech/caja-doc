@@ -1,3 +1,6 @@
+---
+title: Documentation
+---
 # Cajá Documentation
 
 Welcome to the official documentation section for the Cajá language. Here, you'll find comprehensive information about Cajá's type system, core features, and its rich standard library.

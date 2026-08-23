@@ -1,3 +1,7 @@
+---
+title: Libraries
+---
+
 # Native Standard Libraries
 
 Alongside the low-level built-in modules provided directly by the compiler (such as `math`, `string`, and `array`), the Cajá ecosystem features native libraries built entirely using pure Cajá code. 

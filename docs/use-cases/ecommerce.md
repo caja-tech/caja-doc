@@ -11,7 +11,7 @@ This approach turns a complex sequence of operations into a highly readable, dec
 
 ```caja
 import array
-import query
+import "@caja/query"
 
 type Product struct {
     name String

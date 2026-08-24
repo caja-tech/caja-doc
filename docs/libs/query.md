@@ -27,8 +27,8 @@ By combining the data-first `query` module with the pipeline operator, you can w
 ## Example: The Pipeline in Action
 
 ```caja
-import stdlib
-import query
+import "@caja/std"
+import "@caja/query"
 
 # Define our pure transformation functions
 let isEven = fn(x: Number) -> Boolean { 
@@ -44,7 +44,7 @@ let sum = fn(acc: Number, curr: Number) -> Number {
 }
 
 # The data flows from top to bottom, being transformed at each step
-let result = stdlib.range(1, 10)
+let result = std.range(1, 10)
     |> query.filter(isEven)
     |> query.map(double)
     |> query.reduce(sum, 0)
@@ -69,7 +69,7 @@ private const _map = fn<T, K>(arr: [T], transform: fn(T) -> K, acc: [K]) -> [K] 
     return _map(array.tail(arr), transform, next_acc) 
 }
 
-let map = fn<T, K>(arr: [T], transform: fn(T) -> K) -> [K] {
+const map = fn<T, K>(arr: [T], transform: fn(T) -> K) -> [K] {
     return _map(arr, transform, [])
 }
 

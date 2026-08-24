@@ -9,7 +9,7 @@ In this example, we process a list of transactions to calculate the total valid 
 
 ```caja
 import array
-import query
+import "@caja/query"
 
 # Define custom types and structs
 type Transaction struct {

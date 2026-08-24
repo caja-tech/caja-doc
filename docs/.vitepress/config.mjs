@@ -80,7 +80,7 @@ export default defineConfig({
         collapsed: false,
         items: [
           { text: 'Overview', link: '/libs/' },
-          { text: 'stdlib', link: '/libs/stdlib' },
+          { text: 'std', link: '/libs/stdlib' },
           { text: 'query', link: '/libs/query' }
         ]
       },

@@ -9,8 +9,8 @@ In this example, we define a `Loan` struct and calculate the compound interest f
 
 ```caja
 import array
-import query
 import math
+import "@caja/query"
 
 type Loan struct {
     id String

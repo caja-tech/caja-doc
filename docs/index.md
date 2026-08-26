@@ -54,7 +54,7 @@ onUnmounted(() => {
 <div class="hero-wrapper">
 
 <div class="caja-hero">
-  <img src="/brand256x760 (transparent).svg" alt="Cajá Logo" class="caja-hero-logo" />
+  <img src="/brand256x760_transparent.svg" alt="Cajá Logo" class="caja-hero-logo" />
   <p class="tagline">Elegant, fast, and secure.</p>
   <p class="text">A declarative, fast, and highly portable programming language built for expressive data transformations and robust software.</p>
   

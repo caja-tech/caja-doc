@@ -113,12 +113,11 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Navbar Logo Scroll Animation (Homepage Only) */
 html.is-home-page .VPNavBarTitle {
-  transition: opacity 0.3s ease, transform 0.3s ease;
+  transition: opacity 0.3s ease;
 }
 
 html.is-home-page:not(.scrolled-past-hero) .VPNavBarTitle {
   opacity: 0;
-  transform: translateY(15px);
   pointer-events: none;
 }
 
@@ -136,7 +135,7 @@ html.is-home-page:not(.scrolled-past-hero) .VPNavBarTitle {
   .VPNav {
     position: fixed !important;
     width: 100%;
-    z-index: 20; /* Ensure it stays above content */
+    z-index: 100; /* Ensure it stays above content */
     background-color: var(--vp-nav-bg-color) !important;
     transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
   }
@@ -151,13 +150,26 @@ html.is-home-page:not(.scrolled-past-hero) .VPNavBarTitle {
 }
 
 /* Custom Hero Section */
+.caja-hero-container {
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  display: flex;
+  justify-content: center;
+  padding: 0 2rem;
+  box-sizing: border-box;
+}
+
 .hero-wrapper {
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100%;
   max-width: 1200px;
-  margin: 0 auto;
-  padding: 6rem 2rem 4rem;
+  margin: 2rem 0;
+  padding: 3rem 1.5rem;
+  border: 1px solid var(--vp-c-border);
+  border-radius: 24px;
+  box-sizing: border-box;
   gap: 4rem;
 }
 
@@ -166,6 +178,8 @@ html.is-home-page:not(.scrolled-past-hero) .VPNavBarTitle {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    margin: 4rem 0;
+    padding: 4rem;
   }
 }
 
@@ -186,21 +200,21 @@ html.is-home-page:not(.scrolled-past-hero) .VPNavBarTitle {
 
 .caja-hero-logo {
   width: 100%;
-  max-width: 320px;
+  max-width: 260px;
   height: auto;
   margin-bottom: 1.5rem;
 }
 
 @media (min-width: 768px) {
   .caja-hero-logo {
-    max-width: 480px;
+    max-width: 380px;
     margin-bottom: 2rem;
   }
 }
 
 .caja-hero .name {
   font-family: 'Modak', system-ui, sans-serif;
-  font-size: 5rem;
+  font-size: 4rem;
   font-weight: normal;
   color: var(--vp-c-brand-1);
   margin-bottom: 0.5rem;
@@ -208,10 +222,10 @@ html.is-home-page:not(.scrolled-past-hero) .VPNavBarTitle {
 }
 
 .caja-hero .tagline {
-  font-family: 'Zilla Slab', serif !important;
+  font-family: 'Zilla Slab', serif;
   font-weight: 600;
   letter-spacing: -0.01em;
-  font-size: 2.5rem;
+  font-size: 2rem;
   line-height: 1.2;
   color: var(--vp-c-text-1);
   margin-bottom: 1rem;
@@ -219,12 +233,12 @@ html.is-home-page:not(.scrolled-past-hero) .VPNavBarTitle {
 
 @media (min-width: 768px) {
   .caja-hero .tagline {
-    font-size: 3rem;
+    font-size: 2.5rem;
   }
 }
 
 .caja-hero .text {
-  font-size: 1.25rem;
+  font-size: 1.1rem;
   color: var(--vp-c-text-2);
   margin-bottom: 2.5rem;
   line-height: 1.6;
@@ -233,13 +247,27 @@ html.is-home-page:not(.scrolled-past-hero) .VPNavBarTitle {
 .caja-hero .actions {
   display: flex;
   gap: 1rem;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   justify-content: center;
+  width: 100%;
+}
+
+@media (max-width: 480px) {
+  .caja-hero .actions .action-btn {
+    flex: 1;
+    text-align: center;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
 }
 
 @media (min-width: 768px) {
   .caja-hero .actions {
     justify-content: flex-start;
+    width: auto;
+  }
+  .caja-hero .actions .action-btn {
+    flex: none;
   }
 }
 
@@ -251,8 +279,8 @@ html.is-home-page:not(.scrolled-past-hero) .VPNavBarTitle {
 
 .action-btn {
   display: inline-block;
-  padding: 0.75rem 1.5rem;
-  font-size: 1rem;
+  padding: 0.5rem 1.1rem;
+  font-size: 0.95rem;
   font-weight: 600;
   border-radius: 16px;
   text-decoration: none !important;
@@ -301,13 +329,18 @@ html.is-home-page:not(.scrolled-past-hero) .VPNavBarTitle {
 /* Custom Feature Sections */
 .caja-feature-section {
   width: 100vw;
-  min-height: 100vh;
   margin-left: calc(50% - 50vw);
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 4rem 2rem;
   box-sizing: border-box;
+}
+
+@media (min-width: 768px) {
+  .caja-feature-section {
+    padding: 6rem 2rem;
+  }
 }
 
 .caja-feature-section.bg-alt {
@@ -403,39 +436,6 @@ html.is-home-page:not(.scrolled-past-hero) .VPNavBarTitle {
   }
 }
 
-/* Marquee Animation */
-.marquee-container {
-  width: 100%;
-  overflow: hidden;
-  display: flex;
-  padding: 1.5rem 0; /* Prevent shadow clipping */
-  mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
-  -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
-}
-
-.marquee-track {
-  display: flex;
-  width: max-content;
-  animation: marquee-scroll 30s linear infinite;
-  cursor: pointer;
-}
-
-.marquee-track:hover,
-.marquee-track.paused {
-  animation-play-state: paused;
-}
-
-.marquee-content {
-  display: flex;
-  gap: 2rem;
-  padding-right: 2rem;
-  width: max-content;
-}
-
-@keyframes marquee-scroll {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-25%); }
-}
 
 /* Responsive Utility Classes */
 .mobile-only { display: flex; }
@@ -445,7 +445,16 @@ html.is-home-page:not(.scrolled-past-hero) .VPNavBarTitle {
   .desktop-only { display: flex !important; }
 }
 
-/* Strong Typing 3-State Mobile Slider */
+/* Responsive Typing Carousel Slider */
+/* Mobile (Horizontal, bottom) */
+.typing-carousel-wrapper {
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  width: 100%;
+  gap: 1.5rem;
+}
+
 .typing-slider-track {
   position: relative;
   width: 240px;
@@ -453,6 +462,7 @@ html.is-home-page:not(.scrolled-past-hero) .VPNavBarTitle {
   background-color: var(--vp-c-border);
   border-radius: 4px;
 }
+
 .typing-slider-thumb {
   position: absolute;
   top: 0;
@@ -463,16 +473,39 @@ html.is-home-page:not(.scrolled-past-hero) .VPNavBarTitle {
   border-radius: 4px;
   transition: all 0.4s ease;
 }
+
 .typing-carousel-wrapper.state-types .typing-slider-thumb { left: 0; }
 .typing-carousel-wrapper.state-struct .typing-slider-thumb { left: 33.333%; }
 .typing-carousel-wrapper.state-maps .typing-slider-thumb { left: 66.666%; }
+
+/* Desktop (Vertical, right) */
+@media (min-width: 768px) {
+  .typing-carousel-wrapper {
+    flex-direction: row-reverse;
+    align-items: flex-start;
+  }
+  .typing-slider-track {
+    width: 4px;
+    height: 240px;
+    margin-top: 60px;
+  }
+  .typing-slider-thumb {
+    width: 100%;
+    height: 33.333%;
+    top: 0;
+    left: 0;
+  }
+  .typing-carousel-wrapper.state-types .typing-slider-thumb { top: 0; left: 0; }
+  .typing-carousel-wrapper.state-struct .typing-slider-thumb { top: 33.333%; left: 0; }
+  .typing-carousel-wrapper.state-maps .typing-slider-thumb { top: 66.666%; left: 0; }
+}
 
 .caja-feature-text {
   flex: 1;
 }
 
 .caja-feature-text h2 {
-  font-size: 3rem;
+  font-size: 2.25rem;
   margin-bottom: 1.5rem;
   line-height: 1.2;
   border-top: none;
@@ -482,7 +515,7 @@ html.is-home-page:not(.scrolled-past-hero) .VPNavBarTitle {
 }
 
 .caja-feature-text p {
-  font-size: 1.2rem;
+  font-size: 1.05rem;
   color: var(--vp-c-text-2);
   line-height: 1.6;
 }
@@ -596,3 +629,57 @@ html.is-home-page:not(.scrolled-past-hero) .VPNavBarTitle {
 .github-release-content pre code { background-color: transparent; padding: 0; border-radius: 0; }
 .github-release-content a { color: var(--vp-c-brand); text-decoration: underline; }
 .github-release-content a:hover { color: var(--vp-c-brand-dark); }
+
+/* Custom Scrollbar Configuration */
+html {
+  /* Force vertical scrollbar to prevent layout shifting between pages */
+  overflow-y: scroll;
+  overflow-x: hidden;
+  
+  /* Firefox Support */
+  scrollbar-color: var(--vp-c-text-3) transparent;
+  scrollbar-width: thin;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+/* WebKit (Chrome, Edge, Safari) Support */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--vp-c-text-3);
+  border-radius: 10px;
+  /* Adds a "padding" effect around the thumb */
+  border: 3px solid transparent; 
+  background-clip: padding-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--vp-c-text-2);
+}
+
+/* Carousel Opacity States */
+.tco-carousel-wrapper .tco-img-std, .tco-carousel-wrapper .tco-img-tco { opacity: 0; transition: opacity 0.6s ease; }
+.tco-carousel-wrapper.state-std .tco-img-std { opacity: 1; }
+.tco-carousel-wrapper.state-tco .tco-img-tco { opacity: 1; }
+
+.typing-carousel-wrapper .typing-img-types, .typing-carousel-wrapper .typing-img-struct, .typing-carousel-wrapper .typing-img-maps { opacity: 0; transition: opacity 0.6s ease; }
+.typing-carousel-wrapper.state-types .typing-img-types { opacity: 1; }
+.typing-carousel-wrapper.state-struct .typing-img-struct { opacity: 1; }
+.typing-carousel-wrapper.state-maps .typing-img-maps { opacity: 1; }
+
+/* Force solid navbar background to prevent transparent bleed-through at the top of the page */
+.VPNav,
+.VPNavBar,
+.VPNavBar.home.top {
+  background-color: var(--vp-nav-bg-color) !important;
+  z-index: 100 !important;
+}

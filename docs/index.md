@@ -10,12 +10,10 @@ import { useData } from 'vitepress'
 
 const { isDark } = useData()
 
-const activeImage = ref('std')
-const isMarqueePaused = ref(false)
 let timer = null
-
-const activeTypeImage = ref('types')
 let typeTimer = null
+let tcoState = 'std'
+let typingState = 'types'
 
 const handleScroll = () => {
   if (window.scrollY > 150) {
@@ -27,12 +25,23 @@ const handleScroll = () => {
 
 const startTimer = () => {
   timer = setInterval(() => {
-    activeImage.value = activeImage.value === 'std' ? 'tco' : 'std'
+    const tcoWrapper = document.getElementById('tco-carousel')
+    if (tcoWrapper) {
+      tcoWrapper.classList.remove('state-' + tcoState)
+      tcoState = tcoState === 'std' ? 'tco' : 'std'
+      tcoWrapper.classList.add('state-' + tcoState)
+    }
   }, 5000)
+  
   typeTimer = setInterval(() => {
-    if (activeTypeImage.value === 'types') activeTypeImage.value = 'struct'
-    else if (activeTypeImage.value === 'struct') activeTypeImage.value = 'maps'
-    else activeTypeImage.value = 'types'
+    const typeWrapper = document.getElementById('typing-carousel')
+    if (typeWrapper) {
+      typeWrapper.classList.remove('state-' + typingState)
+      if (typingState === 'types') typingState = 'struct'
+      else if (typingState === 'struct') typingState = 'maps'
+      else typingState = 'types'
+      typeWrapper.classList.add('state-' + typingState)
+    }
   }, 5000)
 }
 
@@ -51,6 +60,7 @@ onUnmounted(() => {
 })
 </script>
 
+<div class="caja-hero-container">
 <div class="hero-wrapper">
 
 <div class="caja-hero">
@@ -60,7 +70,7 @@ onUnmounted(() => {
   
   <div class="actions">
     <a href="/introduction/" class="action-btn brand">Get Started</a>
-    <a href="/use-cases/" class="action-btn alt">View Use Cases</a>
+    <a href="/use-cases/" class="action-btn alt">Use Cases</a>
   </div>
 </div>
 
@@ -85,65 +95,39 @@ bun add -g @caja/cli
 </div>
 
 </div>
+</div>
 
-<div class="caja-feature-section" style="flex-direction: column; gap: 4rem; padding-bottom: 4rem;">
-  <div style="max-width: 1200px; width: 100%; display: flex; flex-direction: column; align-items: center; text-align: center;">
-    <div class="caja-feature-text" style="max-width: 800px;">
+<div class="caja-feature-section">
+  <div class="caja-feature-content">
+    <div class="caja-feature-text">
       <h2>Strong Typing</h2>
       <p>Ensure correctness and memory safety with custom Type Aliases, Structs, and Generic types, catching errors early in development.</p>
-    </div>
-  </div>
-
-  <!-- Desktop Marquee Container -->
-  <div class="desktop-only marquee-container caja-feature-image" style="margin: 0; align-items: center; justify-content: flex-start;">
-    <div class="marquee-track" :class="{ 'paused': isMarqueePaused }" @click="isMarqueePaused = !isMarqueePaused">
-      <!-- Original Set -->
-      <div class="marquee-content">
-        <img src="/types.webp" alt="Types Syntax" class="strong-typing-img" />
-        <img src="/struct.webp" alt="Struct Syntax" class="strong-typing-img" />
-        <img src="/maps.webp" alt="Maps Syntax" class="strong-typing-img" />
-      </div>
-      <!-- Duplicated Set 2 -->
-      <div class="marquee-content" aria-hidden="true">
-        <img src="/types.webp" alt="Types Syntax" class="strong-typing-img" />
-        <img src="/struct.webp" alt="Struct Syntax" class="strong-typing-img" />
-        <img src="/maps.webp" alt="Maps Syntax" class="strong-typing-img" />
-      </div>
-      <!-- Duplicated Set 3 -->
-      <div class="marquee-content" aria-hidden="true">
-        <img src="/types.webp" alt="Types Syntax" class="strong-typing-img" />
-        <img src="/struct.webp" alt="Struct Syntax" class="strong-typing-img" />
-        <img src="/maps.webp" alt="Maps Syntax" class="strong-typing-img" />
-      </div>
-      <!-- Duplicated Set 4 -->
-      <div class="marquee-content" aria-hidden="true">
-        <img src="/types.webp" alt="Types Syntax" class="strong-typing-img" />
-        <img src="/struct.webp" alt="Struct Syntax" class="strong-typing-img" />
-        <img src="/maps.webp" alt="Maps Syntax" class="strong-typing-img" />
+      <div style="margin-top: 1.5rem;">
+        <a href="/documentation/types" class="action-btn brand">Explore Types</a>
       </div>
     </div>
-  </div>
-
-  <!-- Mobile Carousel Container -->
-  <div class="mobile-only typing-carousel-wrapper caja-feature-image" :class="'state-' + activeTypeImage" style="flex-direction: column-reverse; width: 100%; align-items: center; gap: 1.5rem; margin-top: 0; padding: 0 1.5rem;">
-    <div class="typing-slider-track">
-      <div class="typing-slider-thumb"></div>
-    </div>
-    <div style="position: relative; width: 100%;">
-      <!-- Types (Defines container height) -->
-      <div :style="{ opacity: activeTypeImage === 'types' ? 1 : 0, transition: 'opacity 0.6s ease', position: 'relative', width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center' }">
-        <div style="font-size: 0.9rem; font-weight: 600; color: var(--vp-c-text-2); margin-bottom: 0.5rem;">Primitive Types</div>
-        <img src="/types.webp" alt="Types Syntax" style="margin: 0; width: 100%;" />
+    <div id="typing-carousel" class="caja-feature-image typing-carousel-wrapper state-types" style="position: relative; margin-top: 0;">
+      <!-- Responsive Slider -->
+      <div class="typing-slider-track">
+        <div class="typing-slider-thumb"></div>
       </div>
-      <!-- Structs (Matches height) -->
-      <div :style="{ opacity: activeTypeImage === 'struct' ? 1 : 0, transition: 'opacity 0.6s ease', position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center' }">
-        <div style="font-size: 0.9rem; font-weight: 600; color: var(--vp-c-text-2); margin-bottom: 0.5rem;">Structs</div>
-        <img src="/struct.webp" alt="Struct Syntax" style="margin: 0; flex: 1; min-height: 0; width: auto; max-width: 100%;" />
-      </div>
-      <!-- Maps (Matches height) -->
-      <div :style="{ opacity: activeTypeImage === 'maps' ? 1 : 0, transition: 'opacity 0.6s ease', position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center' }">
-        <div style="font-size: 0.9rem; font-weight: 600; color: var(--vp-c-text-2); margin-bottom: 0.5rem;">Maps</div>
-        <img src="/maps.webp" alt="Maps Syntax" style="margin: 0; flex: 1; min-height: 0; width: auto; max-width: 100%;" />
+      <!-- Image Container -->
+      <div style="position: relative; width: 100%;">
+        <!-- Types (Defines container height) -->
+        <div class="typing-img-types" style="position: relative; width: 100%;">
+          <div style="font-size: 0.9rem; font-weight: 600; color: var(--vp-c-text-2); margin-bottom: 0.5rem; text-align: left;">Primitive Types</div>
+          <img src="/types.webp" alt="Types Syntax" style="margin: 0; width: 100%;" />
+        </div>
+        <!-- Structs (Overlays on top) -->
+        <div class="typing-img-struct" style="position: absolute; top: 0; left: 0; width: 100%;">
+          <div style="font-size: 0.9rem; font-weight: 600; color: var(--vp-c-text-2); margin-bottom: 0.5rem; text-align: left;">Structs</div>
+          <img src="/struct.webp" alt="Struct Syntax" style="margin: 0; width: 100%;" />
+        </div>
+        <!-- Maps (Overlays on top) -->
+        <div class="typing-img-maps" style="position: absolute; top: 0; left: 0; width: 100%;">
+          <div style="font-size: 0.9rem; font-weight: 600; color: var(--vp-c-text-2); margin-bottom: 0.5rem; text-align: left;">Maps</div>
+          <img src="/maps.webp" alt="Maps Syntax" style="margin: 0; width: 100%;" />
+        </div>
       </div>
     </div>
   </div>
@@ -190,7 +174,7 @@ bun add -g @caja/cli
         <a href="/documentation/recursion#tail-call-optimization-tco" class="action-btn brand">Learn about TCO</a>
       </div>
     </div>
-    <div class="caja-feature-image tco-carousel-wrapper" :class="activeImage === 'std' ? 'state-std' : 'state-tco'" style="position: relative; margin-top: 0;">
+    <div id="tco-carousel" class="caja-feature-image tco-carousel-wrapper state-std" style="position: relative; margin-top: 0;">
       <!-- Responsive Slider -->
       <div class="tco-slider-track">
         <div class="tco-slider-thumb"></div>
@@ -198,12 +182,12 @@ bun add -g @caja/cli
       <!-- Image Container -->
       <div style="position: relative; width: 100%;">
         <!-- Standard Recursion Image (Drives the height) -->
-        <div :style="{ opacity: activeImage === 'std' ? 1 : 0, transition: 'opacity 0.6s ease', position: 'relative', width: '100%' }">
+        <div class="tco-img-std" style="position: relative; width: 100%;">
           <div style="font-size: 0.9rem; font-weight: 600; color: var(--vp-c-text-2); margin-bottom: 0.5rem; text-align: left;">Standard Recursion</div>
           <img src="/std_recursion.webp" alt="Standard Recursion Code" style="margin: 0; width: 100%;" />
         </div>
         <!-- TCO Image (Overlays on top) -->
-        <div :style="{ opacity: activeImage === 'tco' ? 1 : 0, transition: 'opacity 0.6s ease', position: 'absolute', top: 0, left: 0, width: '100%' }">
+        <div class="tco-img-tco" style="position: absolute; top: 0; left: 0; width: 100%;">
           <div style="font-size: 0.9rem; font-weight: 600; color: var(--vp-c-text-2); margin-bottom: 0.5rem; text-align: left;">Tail Call Optimized</div>
           <img src="/tco_recursion.webp" alt="Tail Call Optimized Code" style="margin: 0; width: 100%;" />
         </div>

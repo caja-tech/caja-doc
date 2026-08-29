@@ -10,13 +10,28 @@ try {
   })
   if (res.ok) {
     const releases = await res.json()
-    releaseSidebarItems = releases.map(r => ({
+    releaseSidebarItems = releases.slice(0, 5).map(r => ({
       text: r.name || r.tag_name,
       link: `/releases/${r.tag_name}`
     }))
   }
 } catch (e) {
   console.error('Failed to fetch releases for sidebar', e)
+}
+
+try {
+  const changelogRes = await fetch('https://raw.githubusercontent.com/caja-tech/caja-cli/main/CHANGELOG.md')
+  if (changelogRes.ok) {
+    const changelogText = await changelogRes.text()
+    const targetPath = './docs/releases/changelog.md'
+    const currentText = fs.existsSync(targetPath) ? fs.readFileSync(targetPath, 'utf8') : ''
+    
+    if (currentText !== changelogText) {
+      fs.writeFileSync(targetPath, changelogText)
+    }
+  }
+} catch (e) {
+  console.error('Failed to fetch changelog', e)
 }
 
 export default defineConfig({
@@ -99,6 +114,7 @@ export default defineConfig({
         collapsed: false,
         items: [
           { text: 'Overview', link: '/releases/' },
+          { text: 'Changelog', link: '/releases/changelog' },
           ...releaseSidebarItems
         ]
       }
